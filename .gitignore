@@ -1,0 +1,41 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+build/
+dist/
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Render / Deploy
+/.render/
+Dockerfile
+# (Dockerfile ignored only if you use Dockerfile; you can keep it if you need the file)
+
+# Secrets – keep API keys out of Git
+.env
+.env.*
