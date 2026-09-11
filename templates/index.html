@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>धरोहर सेतु — AI Cultural Heritage & Folk Radar</title>
+  <title>धरोहर सेतु — AI Cultural Heritage &amp; Folk Radar</title>
 
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
@@ -30,11 +30,9 @@
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--cream);
-      height: 100vh;
-      width: 100vw;
+      height: 100vh; width: 100vw;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
 
     .font-royal { font-family: 'Rozha One', serif; }
@@ -44,429 +42,240 @@
     #navbar {
       height: var(--nav-height);
       background: linear-gradient(90deg, #2C1010 0%, #5C2020 40%, #8B3A1A 100%);
-      display: flex;
-      align-items: center;
-      padding: 0 14px;
-      gap: 10px;
+      display: flex; align-items: center;
+      padding: 0 14px; gap: 10px;
       z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.4);
       flex-shrink: 0;
     }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      flex-shrink: 0;
-    }
-
+    .nav-brand { display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
     .nav-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       background: radial-gradient(circle, #FFD700, #C09030);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 10px rgba(255,215,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; box-shadow: 0 0 10px rgba(255,215,0,0.5);
     }
-
     .nav-title { color: #FFE680; font-family: 'Rozha One', serif; font-size: 1.2rem; line-height: 1.1; }
     .nav-subtitle { color: rgba(255,220,100,0.7); font-size: 9px; letter-spacing: 0.5px; }
 
-    .nav-center {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+    .nav-center { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
     .mode-pill {
       display: flex;
       background: rgba(0,0,0,0.35);
       border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 20px;
-      padding: 3px;
-      gap: 2px;
+      border-radius: 20px; padding: 3px; gap: 2px;
     }
 
     .mode-btn {
-      padding: 5px 12px;
-      border-radius: 16px;
-      font-size: 11px;
-      font-weight: 600;
-      color: rgba(255,230,160,0.8);
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      transition: all 0.2s;
-      white-space: nowrap;
+      padding: 5px 12px; border-radius: 16px;
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,230,160,0.8); cursor: pointer;
+      border: none; background: transparent;
+      transition: all 0.2s; white-space: nowrap;
     }
-
-    .mode-btn.active {
-      background: var(--gold);
-      color: #2C1010;
-      box-shadow: 0 2px 6px rgba(201,168,76,0.5);
-    }
-
+    .mode-btn.active { background: var(--gold); color: #2C1010; box-shadow: 0 2px 6px rgba(201,168,76,0.5); }
     .mode-btn:hover:not(.active) { background: rgba(255,255,255,0.1); color: #FFE680; }
 
     .fest-btn {
-      padding: 5px 14px;
-      border-radius: 16px;
-      font-size: 11px;
-      font-weight: 700;
-      color: #2C1010;
+      padding: 5px 14px; border-radius: 16px;
+      font-size: 11px; font-weight: 700; color: #2C1010;
       background: linear-gradient(135deg, #FFD700, #C09030);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
+      border: none; cursor: pointer; transition: all 0.2s;
     }
-
     .fest-btn:hover { opacity: 0.9; transform: scale(1.02); }
 
     #state-select {
-      background: rgba(0,0,0,0.4);
-      color: #FFE680;
-      border: 1px solid rgba(201,168,76,0.5);
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      outline: none;
-      max-width: 160px;
+      background: rgba(0,0,0,0.4); color: #FFE680;
+      border: 1px solid rgba(201,168,76,0.5); border-radius: 8px;
+      padding: 4px 8px; font-size: 11px; font-weight: 600;
+      cursor: pointer; outline: none; max-width: 160px;
     }
-
     #state-select option { background: #2C1010; color: #FFE680; }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-shrink: 0;
-    }
+    .nav-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
 
     .nav-btn {
-      padding: 5px 12px;
-      border-radius: 10px;
+      padding: 5px 12px; border-radius: 10px;
       border: 1px solid rgba(201,168,76,0.4);
-      background: rgba(0,0,0,0.3);
-      color: #FFE680;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
+      background: rgba(0,0,0,0.3); color: #FFE680;
+      font-size: 11px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
     }
-
     .nav-btn:hover { background: rgba(201,168,76,0.2); }
 
-    /* ====== MAIN BODY LAYOUT ====== */
-    #main-body {
-      flex: 1;
+    /* Language pill in nav */
+    .lang-pill {
       display: flex;
-      overflow: hidden;
-      position: relative;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 20px; padding: 3px; gap: 2px;
     }
+    .lang-btn {
+      padding: 4px 10px; border-radius: 16px;
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,230,160,0.8); cursor: pointer;
+      border: none; background: transparent;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .lang-btn.active { background: var(--gold); color: #2C1010; }
+    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.1); }
+
+    /* ====== MAIN BODY LAYOUT ====== */
+    #main-body { flex: 1; display: flex; overflow: hidden; position: relative; }
 
     /* ====== LEFT SIDEBAR ====== */
     #sidebar {
       width: var(--sidebar-width);
       background: var(--parchment);
       border-right: 2px solid var(--gold);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      flex-shrink: 0;
-      z-index: 10;
+      display: flex; flex-direction: column;
+      overflow: hidden; flex-shrink: 0; z-index: 10;
     }
 
     .sidebar-header {
       background: linear-gradient(135deg, var(--maroon), #B03030);
-      color: white;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
+      color: white; padding: 10px 12px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-shrink: 0;
     }
-
-    .sidebar-header h2 {
-      font-family: 'Rozha One', serif;
-      font-size: 0.9rem;
-      color: #FFE680;
-    }
+    .sidebar-header h2 { font-family: 'Rozha One', serif; font-size: 0.9rem; color: #FFE680; }
 
     #site-count-badge {
-      background: var(--gold);
-      color: #2C1010;
-      font-size: 10px;
-      font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 10px;
+      background: var(--gold); color: #2C1010;
+      font-size: 10px; font-weight: 800;
+      padding: 2px 7px; border-radius: 10px;
     }
 
-    #sidebar-search {
-      padding: 8px 10px;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
+    /* Add site button in sidebar */
+    .sidebar-add-btn {
+      margin: 0 10px 0; padding: 7px 10px;
+      background: linear-gradient(135deg, #1A5C2A, #2E7D32);
+      color: white; border: none; border-radius: 8px;
+      font-size: 11px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s; text-align: center;
       flex-shrink: 0;
     }
+    .sidebar-add-btn:hover { opacity: 0.9; transform: scale(1.01); }
 
+    #sidebar-search { padding: 8px 10px; border-bottom: 1px solid rgba(201,168,76,0.3); flex-shrink: 0; }
     #search-input {
-      width: 100%;
-      padding: 7px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
-      background: #FFF9EE;
-      font-size: 12px;
-      outline: none;
-      font-family: 'Outfit', sans-serif;
+      width: 100%; padding: 7px 10px; border-radius: 8px;
+      border: 1px solid var(--gold); background: #FFF9EE;
+      font-size: 12px; outline: none; font-family: 'Outfit', sans-serif;
     }
 
     #sites-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+      flex: 1; overflow-y: auto; padding: 6px;
+      display: flex; flex-direction: column; gap: 5px;
     }
-
     #sites-list::-webkit-scrollbar { width: 4px; }
     #sites-list::-webkit-scrollbar-track { background: #F5ECD7; }
     #sites-list::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
     .site-card {
-      display: flex;
-      gap: 9px;
-      align-items: center;
-      padding: 8px 9px;
-      border-radius: 10px;
+      display: flex; gap: 9px; align-items: center;
+      padding: 8px 9px; border-radius: 10px;
       border: 1px solid rgba(201,168,76,0.3);
-      background: #FFFDF8;
-      cursor: pointer;
-      transition: all 0.18s;
+      background: #FFFDF8; cursor: pointer; transition: all 0.18s;
     }
-
     .site-card:hover { background: #FFF3D0; border-color: var(--gold); transform: translateX(2px); }
     .site-card.active { background: linear-gradient(135deg, #FFF3D0, #FFE9A0); border-color: var(--maroon); border-width: 2px; }
 
+    /* User-submitted site indicator */
+    .site-card.user-card { border-left: 3px solid #2E7D32; }
+
     .site-thumb {
-      width: 52px;
-      height: 52px;
-      border-radius: 8px;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 1px solid rgba(201,168,76,0.4);
-      background: #E8D8B0;
+      width: 52px; height: 52px; border-radius: 8px;
+      object-fit: cover; flex-shrink: 0;
+      border: 1px solid rgba(201,168,76,0.4); background: #E8D8B0;
     }
-
     .site-card-info { flex: 1; min-width: 0; }
-
     .site-card-name {
-      font-size: 12px;
-      font-weight: 700;
-      color: #2C1010;
-      line-height: 1.2;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 12px; font-weight: 700; color: #2C1010;
+      line-height: 1.2; display: -webkit-box;
+      -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
-
-    .site-card-meta {
-      font-size: 10px;
-      color: #8B5E3C;
-      margin-top: 2px;
-    }
-
-    .site-card-dist {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--maroon);
-      margin-top: 3px;
-    }
+    .site-card-meta { font-size: 10px; color: #8B5E3C; margin-top: 2px; }
+    .site-card-dist { font-size: 10px; font-weight: 700; color: var(--maroon); margin-top: 3px; }
 
     /* ====== MAP CONTAINER ====== */
-    #map-container {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-    }
-
+    #map-container { flex: 1; position: relative; overflow: hidden; }
     #map { width: 100%; height: 100%; }
 
     /* ====== STORY PANEL (RIGHT DRAWER) ====== */
     #story-panel {
-      width: 0;
-      min-width: 0;
+      width: 0; min-width: 0;
       background: var(--cream);
       border-left: 2px solid var(--gold);
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: hidden;
+      display: flex; flex-direction: column;
+      overflow-x: hidden; overflow-y: hidden;
       flex-shrink: 0;
       transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 10;
     }
+    #story-panel.open { width: var(--story-width); min-width: var(--story-width); overflow-y: auto; }
 
-    #story-panel.open {
-      width: var(--story-width);
-      min-width: var(--story-width);
-      overflow-y: auto;
-    }
-
-
-    .story-img-header {
-      position: relative;
-      height: 200px;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    #story-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .story-img-header { position: relative; height: 200px; flex-shrink: 0; overflow: hidden; }
+    #story-img { width: 100%; height: 100%; object-fit: cover; }
     .story-img-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(44,16,16,0.85) 100%);
     }
-
-    .story-img-text {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      right: 40px;
-    }
-
-    #story-site-name {
-      font-family: 'Rozha One', serif;
-      font-size: 1.1rem;
-      color: #FFE680;
-      line-height: 1.2;
-    }
-
-    #story-site-hindi {
-      font-family: 'Yatra One', cursive;
-      font-size: 0.75rem;
-      color: rgba(255,230,160,0.8);
-      margin-top: 2px;
-    }
-
+    .story-img-text { position: absolute; bottom: 12px; left: 12px; right: 40px; }
+    #story-site-name { font-family: 'Rozha One', serif; font-size: 1.1rem; color: #FFE680; line-height: 1.2; }
+    #story-site-hindi { font-family: 'Yatra One', cursive; font-size: 0.75rem; color: rgba(255,230,160,0.8); margin-top: 2px; }
     .story-close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 30px;
-      height: 30px;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
+      position: absolute; top: 10px; right: 10px;
+      width: 30px; height: 30px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%; color: white; font-size: 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
     }
-
     .story-close-btn:hover { background: rgba(0,0,0,0.8); }
 
-    /* Story badges */
-    .story-badges {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      padding: 10px 12px 8px;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-      flex-shrink: 0;
-    }
-
-    .badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 10px;
-      border: 1px solid;
-    }
-
+    .story-badges { display: flex; gap: 6px; flex-wrap: wrap; padding: 10px 12px 8px; border-bottom: 1px solid rgba(201,168,76,0.3); flex-shrink: 0; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; border: 1px solid; }
     .badge-cat { background: #FFF3D0; color: var(--maroon); border-color: var(--gold); }
     .badge-period { background: #F0F8FF; color: #2C4A8C; border-color: #6699CC; }
     .badge-dist { background: #F0FFF0; color: #1A5C2A; border-color: #4CAF50; }
 
-    /* Action buttons */
-    .story-actions {
-      display: flex;
-      gap: 7px;
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-      flex-shrink: 0;
-    }
-
+    .story-actions { display: flex; gap: 7px; padding: 8px 12px; border-bottom: 1px solid rgba(201,168,76,0.3); flex-shrink: 0; }
     .action-btn {
-      flex: 1;
-      padding: 8px 6px;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
+      flex: 1; padding: 8px 6px; border-radius: 10px;
+      font-size: 11px; font-weight: 700; cursor: pointer;
+      border: none; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
     }
-
-    .btn-voice {
-      background: linear-gradient(135deg, var(--maroon), #B03030);
-      color: white;
-    }
-
+    .btn-voice { background: linear-gradient(135deg, var(--maroon), #B03030); color: white; }
     .btn-voice:hover { opacity: 0.9; }
     .btn-voice.playing { background: linear-gradient(135deg, #1A5C2A, #2E7D32); }
-
-    .btn-route {
-      background: linear-gradient(135deg, #1A3A6C, #2C5FAA);
-      color: white;
-    }
-
+    .btn-route { background: linear-gradient(135deg, #1A3A6C, #2C5FAA); color: white; }
     .btn-route:hover { opacity: 0.9; }
 
-    /* Route info strip */
-    #route-info {
-      display: none;
-      padding: 7px 12px;
-      background: linear-gradient(90deg, #EAF4FF, #F0F8FF);
-      border-bottom: 1px solid rgba(100,150,200,0.4);
-      font-size: 11px;
-      font-weight: 600;
-      color: #1A3A6C;
-      gap: 14px;
-      align-items: center;
+    /* Voice speed control */
+    .voice-controls {
+      display: none; padding: 6px 12px;
+      background: rgba(123,30,30,0.06);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      align-items: center; gap: 10px; font-size: 11px; color: #5C3A1A;
       flex-shrink: 0;
     }
+    .voice-controls.visible { display: flex; }
+    .voice-controls label { font-weight: 600; }
+    .voice-controls input[type=range] { flex: 1; accent-color: var(--maroon); }
 
+    #route-info {
+      display: none; padding: 7px 12px;
+      background: linear-gradient(90deg, #EAF4FF, #F0F8FF);
+      border-bottom: 1px solid rgba(100,150,200,0.4);
+      font-size: 11px; font-weight: 600; color: #1A3A6C;
+      gap: 14px; align-items: center; flex-shrink: 0;
+    }
     #route-info.visible { display: flex; }
 
-    /* Story chapters */
-    #story-chapters {
-      flex: 1;
-      overflow-y: auto;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
+    #story-chapters { flex: 1; overflow-y: auto; padding: 10px 12px; display: flex; flex-direction: column; gap: 12px; }
     #story-chapters::-webkit-scrollbar { width: 4px; }
     #story-chapters::-webkit-scrollbar-track { background: var(--cream); }
     #story-chapters::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
@@ -475,173 +284,119 @@
       background: #FFFDF5;
       border: 1px solid rgba(201,168,76,0.25);
       border-left: 3px solid var(--gold);
-      border-radius: 8px;
-      padding: 10px 11px;
+      border-radius: 8px; padding: 10px 11px;
     }
+    .chapter-heading { font-size: 11px; font-weight: 800; color: var(--maroon); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .chapter-content { font-size: 13px; color: #3C2A20; line-height: 1.65; }
 
-    .chapter-heading {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--maroon);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-    }
-
-    .chapter-content {
-      font-size: 13px;
-      color: #3C2A20;
-      line-height: 1.65;
-    }
-
-    /* Loading state */
-    #story-loading {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 30px;
-      color: var(--maroon);
-      font-size: 13px;
-    }
-
+    #story-loading { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 30px; color: var(--maroon); font-size: 13px; }
     #story-loading.visible { display: flex; }
 
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 3px solid rgba(123,30,30,0.2);
-      border-top-color: var(--maroon);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-
+    .spinner { width: 28px; height: 28px; border: 3px solid rgba(123,30,30,0.2); border-top-color: var(--maroon); border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ====== MAP PINS ====== */
     .custom-pin {
-      width: 34px;
-      height: 34px;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.35);
-      border: 2px solid #FFF;
-      cursor: pointer;
-      transition: transform 0.2s;
+      border: 2px solid #FFF; cursor: pointer; transition: transform 0.2s;
     }
-
     .custom-pin:hover { transform: rotate(-45deg) scale(1.2); }
     .custom-pin span { transform: rotate(45deg); font-size: 14px; }
     .pin-monument { background: linear-gradient(135deg, #7B1E1E, #C9A84C); }
+    .pin-user-site { background: linear-gradient(135deg, #1A5C2A, #4CAF50); }
     .pin-user { background: linear-gradient(135deg, #0B3D7A, #1565C0); }
 
-    /* ====== FESTIVALS MODAL ====== */
-    #fest-modal {
-      position: fixed;
-      inset: 0;
+    /* ====== UNIVERSAL MODAL ====== */
+    .u-modal {
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.65);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      z-index: 2000; display: none;
+      align-items: center; justify-content: center; padding: 20px;
     }
+    .u-modal.open { display: flex; }
 
-    #fest-modal.open { display: flex; }
-
-    .fest-modal-inner {
-      background: var(--cream);
-      border-radius: 16px;
+    .u-modal-inner {
+      background: var(--cream); border-radius: 16px;
       border: 2px solid var(--gold);
-      max-width: 680px;
-      width: 100%;
-      max-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      max-width: 680px; width: 100%; max-height: 88vh;
+      display: flex; flex-direction: column; overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
 
-    .fest-modal-header {
+    .u-modal-header {
       background: linear-gradient(90deg, #2C1010, #7B3020);
-      color: white;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
+      color: white; padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
     }
-
-    .fest-modal-header h3 {
-      font-family: 'Rozha One', serif;
-      font-size: 1.05rem;
-      color: #FFE680;
-    }
-
+    .u-modal-header h3 { font-family: 'Rozha One', serif; font-size: 1.05rem; color: #FFE680; }
     .modal-close {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); border: none;
+      color: white; font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    #fest-list {
-      overflow-y: auto;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .u-modal-body { overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 
+    /* Form styles */
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 11px; font-weight: 700; color: var(--maroon); text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 8px 10px; border-radius: 8px;
+      border: 1px solid rgba(201,168,76,0.5); background: #FFFBF0;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      color: #2C1010; outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--maroon); }
+    .form-group textarea { resize: vertical; min-height: 70px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-submit {
+      padding: 10px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--maroon), #B03030);
+      color: white; border: none; font-weight: 700; font-size: 14px;
+      cursor: pointer; transition: all 0.2s; margin-top: 6px;
+    }
+    .form-submit:hover { opacity: 0.9; }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-success {
+      display: none; background: #E8F5E9; border: 1px solid #4CAF50;
+      border-radius: 8px; padding: 10px 14px;
+      color: #1B5E20; font-size: 13px; font-weight: 600; text-align: center;
+    }
+    .form-success.visible { display: block; }
+    .form-error { display: none; background: #FFEBEE; border: 1px solid #EF5350; border-radius: 8px; padding: 10px 14px; color: #B71C1C; font-size: 12px; }
+    .form-error.visible { display: block; }
+
+    /* Festival cards */
     .fest-card {
-      background: #FFFBF0;
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 12px;
-      padding: 12px 14px;
-      border-left: 4px solid var(--gold);
+      background: #FFFBF0; border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 12px; padding: 12px 14px; border-left: 4px solid var(--gold);
     }
-
-    .fest-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 5px;
-    }
-
-    .fest-timing {
-      font-size: 10px;
-      font-weight: 700;
-      color: #5C3A1A;
-      background: #FFF3CC;
-      padding: 2px 8px;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
-    }
-
+    .fest-card.user-fest { border-left-color: #4CAF50; }
+    .fest-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .fest-timing { font-size: 10px; font-weight: 700; color: #5C3A1A; background: #FFF3CC; padding: 2px 8px; border-radius: 8px; border: 1px solid var(--gold); }
     .fest-card-name { font-family: 'Rozha One', serif; font-size: 0.95rem; color: #2C1010; }
     .fest-card-hindi { font-family: 'Yatra One', cursive; font-size: 0.75rem; color: #7B3020; }
     .fest-card-desc { font-size: 12px; color: #3C2A20; margin-top: 5px; line-height: 1.55; }
     .fest-card-exp { font-size: 11px; color: #5C3A1A; font-weight: 600; margin-top: 4px; }
 
-    /* Route polyline pulse */
-    .route-line {
-      stroke-dasharray: 10, 5;
-      animation: dashMove 0.8s linear infinite;
+    /* Tabs in festival modal */
+    .modal-tabs { display: flex; gap: 0; border-bottom: 2px solid rgba(201,168,76,0.3); flex-shrink: 0; background: #FDF6E9; }
+    .modal-tab {
+      flex: 1; padding: 10px 8px; font-size: 12px; font-weight: 700;
+      color: #8B5E3C; background: none; border: none; cursor: pointer;
+      border-bottom: 3px solid transparent; transition: all 0.2s;
     }
+    .modal-tab.active { color: var(--maroon); border-bottom-color: var(--maroon); }
+    .modal-tab-content { display: none; }
+    .modal-tab-content.active { display: block; }
 
-    @keyframes dashMove {
-      to { stroke-dashoffset: -15; }
-    }
+    /* Route polyline pulse */
+    @keyframes dashMove { to { stroke-dashoffset: -15; } }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -658,7 +413,7 @@
       <div class="nav-logo">🪔</div>
       <div>
         <div class="nav-title">धरोहर सेतु</div>
-        <div class="nav-subtitle">AI Cultural Heritage & Folk Radar</div>
+        <div class="nav-subtitle">AI Cultural Heritage &amp; Folk Radar</div>
       </div>
     </div>
 
@@ -671,13 +426,17 @@
       <button class="fest-btn" onclick="openFestModal()">🪔 Lok-Utsav <span id="fest-badge" style="background:rgba(0,0,0,0.2);padding:0 4px;border-radius:6px;margin-left:2px;">0</span></button>
       <!-- State Dropdown -->
       <select id="state-select">
-        <option value="Jammu and Kashmir">Jammu & Kashmir</option>
+        <option value="Jammu and Kashmir">Jammu &amp; Kashmir</option>
       </select>
     </div>
 
     <div class="nav-right">
+      <!-- Language Selector -->
+      <div class="lang-pill">
+        <button class="lang-btn active" id="btn-lang-hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        <button class="lang-btn" id="btn-lang-en" onclick="setLang('en')">🇬🇧 English</button>
+      </div>
       <button class="nav-btn" onclick="detectLocation()">📍 <span id="gps-label">Live GPS</span></button>
-      <button class="nav-btn" onclick="toggleLang()">🌐 <span id="lang-label">हिन्दी</span></button>
     </div>
   </nav>
 
@@ -690,6 +449,10 @@
         <h2>🏛️ Heritage Sites</h2>
         <span id="site-count-badge">0</span>
       </div>
+      <!-- Add Location Button -->
+      <button class="sidebar-add-btn" onclick="openAddSiteModal()" style="margin:8px 10px 4px;">
+        ➕ Apna Location Add Karo
+      </button>
       <div id="sidebar-search">
         <input type="text" id="search-input" placeholder="🔍 Search sites..." oninput="filterSidebar(this.value)" />
       </div>
@@ -734,6 +497,13 @@
         </button>
       </div>
 
+      <!-- Voice Speed Control -->
+      <div class="voice-controls" id="voice-controls">
+        <label>🔊 Speed:</label>
+        <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.1" value="0.9" oninput="updateVoiceRate(this.value)">
+        <span id="voice-rate-label">0.9x</span>
+      </div>
+
       <!-- Route Info Strip -->
       <div id="route-info">
         <span>🚗 <b id="route-dist">—</b> km</span>
@@ -753,42 +523,184 @@
 
   </div><!-- end main-body -->
 
-  <!-- FESTIVALS MODAL -->
-  <div id="fest-modal">
-    <div class="fest-modal-inner">
-      <div class="fest-modal-header">
+  <!-- ====== FESTIVALS MODAL ====== -->
+  <div id="fest-modal" class="u-modal">
+    <div class="u-modal-inner">
+      <div class="u-modal-header">
         <div>
           <h3>🪔 <span id="fest-modal-title">State Folk Tale</span></h3>
           <div style="font-size:10px;color:rgba(255,220,100,0.7);margin-top:2px;">Paramparik tithi aur sanskritik mahatva</div>
         </div>
         <button class="modal-close" onclick="closeFestModal()">✕</button>
       </div>
-      <div id="fest-list"></div>
+      <!-- Tabs -->
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tab-view-fest" onclick="switchFestTab('view')">📋 Utsav Dekho</button>
+        <button class="modal-tab" id="tab-add-fest" onclick="switchFestTab('add')">➕ Apna Festival Add Karo</button>
+      </div>
+      <!-- View Tab -->
+      <div class="modal-tab-content active u-modal-body" id="fest-view-panel" style="max-height:60vh;">
+        <div id="fest-list"></div>
+      </div>
+      <!-- Add Festival Tab -->
+      <div class="modal-tab-content u-modal-body" id="fest-add-panel">
+        <div class="form-success" id="fest-form-success">✅ Aapka festival safaltapoorvak jod diya gaya!</div>
+        <div class="form-error" id="fest-form-error"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Festival Name (English) *</label>
+            <input type="text" id="ff-name" placeholder="e.g. Baisakhi Mela" />
+          </div>
+          <div class="form-group">
+            <label>Festival Name (Hindi) *</label>
+            <input type="text" id="ff-hindi" placeholder="e.g. बैसाखी मेला" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>State *</label>
+            <input type="text" id="ff-state" placeholder="e.g. Punjab" />
+          </div>
+          <div class="form-group">
+            <label>District / Area *</label>
+            <input type="text" id="ff-district" placeholder="e.g. Amritsar" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Month *</label>
+            <select id="ff-month">
+              <option value="">-- Select Month --</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Traditional Timing</label>
+            <input type="text" id="ff-timing" placeholder="e.g. Full Moon Night" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cultural Significance *</label>
+          <textarea id="ff-significance" placeholder="Yeh festival kyun khas hai? Cultural, religious, historical importance..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Must Experience</label>
+          <input type="text" id="ff-must" placeholder="e.g. Bhandara, Folk dance, Lantern lighting..." />
+        </div>
+        <div class="form-group">
+          <label>Short Summary</label>
+          <textarea id="ff-summary" placeholder="2-3 sentences mein festival ke baare mein..." style="min-height:50px;"></textarea>
+        </div>
+        <button class="form-submit" id="fest-submit-btn" onclick="submitFestival()">🎪 Festival Jodo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== ADD SITE MODAL ====== -->
+  <div id="add-site-modal" class="u-modal">
+    <div class="u-modal-inner">
+      <div class="u-modal-header">
+        <div>
+          <h3>➕ Naya Heritage Location Jodo</h3>
+          <div style="font-size:10px;color:rgba(255,220,100,0.7);margin-top:2px;">Aapka submission turant map pe aa jayega</div>
+        </div>
+        <button class="modal-close" onclick="closeAddSiteModal()">✕</button>
+      </div>
+      <div class="u-modal-body">
+        <div class="form-success" id="site-form-success">✅ Aapka location safaltapoorvak jod diya gaya! Map refresh karo ya reload karo.</div>
+        <div class="form-error" id="site-form-error"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Site Name (English) *</label>
+            <input type="text" id="sf-name" placeholder="e.g. Martand Sun Temple" />
+          </div>
+          <div class="form-group">
+            <label>Site Name (Hindi)</label>
+            <input type="text" id="sf-hindi" placeholder="e.g. मार्तंड सूर्य मंदिर" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>District *</label>
+            <input type="text" id="sf-district" placeholder="e.g. Anantnag" />
+          </div>
+          <div class="form-group">
+            <label>State *</label>
+            <input type="text" id="sf-state" placeholder="e.g. Jammu and Kashmir" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Latitude *</label>
+            <input type="number" id="sf-lat" step="0.0001" placeholder="e.g. 33.7733" />
+          </div>
+          <div class="form-group">
+            <label>Longitude *</label>
+            <input type="number" id="sf-lng" step="0.0001" placeholder="e.g. 75.1600" />
+          </div>
+        </div>
+        <div style="font-size:10px;color:#8B5E3C;margin-top:-6px;">
+          💡 Lat/Lng pane ke liye: Google Maps pe jagah dhundo → right-click → coordinates copy karo
+          <button onclick="useCurrentLocation()" style="margin-left:8px;padding:2px 8px;font-size:10px;background:var(--gold);border:none;border-radius:6px;cursor:pointer;font-weight:700;">📍 Meri Current Location Use Karo</button>
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="sf-category">
+            <option value="">-- Category Select Karo --</option>
+            <option>Temple</option><option>Fort</option><option>Palace</option>
+            <option>Mosque</option><option>Church</option><option>Monument</option>
+            <option>Stupa</option><option>Archaeological Site</option>
+            <option>Nature Site</option><option>Heritage Village</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea id="sf-desc" placeholder="Is jagah ke baare mein batao — history, architecture, importance..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Local Folklore / Secret (Optional)</label>
+          <input type="text" id="sf-folklore" placeholder="Koi kahani, legend ya rahasya..." />
+        </div>
+        <div class="form-group">
+          <label>Best Time to Visit</label>
+          <input type="text" id="sf-besttime" placeholder="e.g. October to March" />
+        </div>
+        <div class="form-group">
+          <label>Image URL (Optional)</label>
+          <input type="text" id="sf-image" placeholder="https://... (photo ka link)" />
+        </div>
+        <button class="form-submit" id="site-submit-btn" onclick="submitSite()">🏛️ Location Jodo</button>
+      </div>
     </div>
   </div>
 
   <script>
   // =====================================================
-  // DharoharSetu v3.0 — Full Featured App
+  // DharoharSetu v4.0 — Full Featured App
   // =====================================================
 
-    const S = {
-      lat: 32.5625, lng: 75.12,
-      userLatLng: [32.5625, 75.12],
-      state: "Jammu and Kashmir",
-      mode: "nearby",
-      lang: "hi",
-      map: null,
-      userMarker: null,
-      markersLayer: null,
-      routeLayer: null,
-      sites: [],
-      allSites: [],
-      festivals: [],
-      activeSite: null,
-      speechUtterance: null,
-      isPlaying: false
-    };
+  const S = {
+    lat: 32.5625, lng: 75.12,
+    userLatLng: [32.5625, 75.12],
+    state: "Jammu and Kashmir",
+    mode: "nearby",
+    lang: "hi",
+    map: null,
+    userMarker: null,
+    markersLayer: null,
+    routeLayer: null,
+    sites: [],
+    allSites: [],
+    festivals: [],
+    activeSite: null,
+    speechUtterance: null,
+    isPlaying: false,
+    voiceRate: 0.9,
+    selectedVoice: null
+  };
 
   const STATE_BOUNDS = {
     "Jammu and Kashmir": { bounds: [[32.0,73.5],[36.0,80.5]], center: [33.9,76.0], zoom: 7 },
@@ -809,17 +721,75 @@
     await loadStates();
     setupStateDropdown();
     detectLocation();
+    loadVoices();
   });
+
+  // ---- Voice Loading (for better quality) ----
+  function loadVoices() {
+    if (!('speechSynthesis' in window)) return;
+    const tryLoad = () => {
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length === 0) return;
+      S._voices = voices;
+      // Pick best voice for current language
+      pickBestVoice(S.lang);
+    };
+    window.speechSynthesis.onvoiceschanged = tryLoad;
+    tryLoad();
+  }
+
+  function pickBestVoice(lang) {
+    if (!S._voices) return null;
+    const voices = S._voices;
+    let preferred = null;
+
+    if (lang === "hi") {
+      // Priority: Google Hindi > Microsoft Swara > any hi-IN
+      preferred =
+        voices.find(v => v.lang === "hi-IN" && v.name.includes("Google")) ||
+        voices.find(v => v.lang === "hi-IN" && v.name.includes("Swara")) ||
+        voices.find(v => v.lang === "hi-IN") ||
+        voices.find(v => v.lang.startsWith("hi")) ||
+        null;
+    } else {
+      // Priority: Google en-IN > Microsoft Ravi > any en-IN > en-US Google
+      preferred =
+        voices.find(v => v.lang === "en-IN" && v.name.includes("Google")) ||
+        voices.find(v => v.lang === "en-IN" && !v.name.includes("Male")) ||
+        voices.find(v => v.lang === "en-IN") ||
+        voices.find(v => v.lang === "en-US" && v.name.includes("Google")) ||
+        voices.find(v => v.lang.startsWith("en")) ||
+        null;
+    }
+    S.selectedVoice = preferred;
+    return preferred;
+  }
+
+  function updateVoiceRate(val) {
+    S.voiceRate = parseFloat(val);
+    document.getElementById("voice-rate-label").textContent = val + "x";
+  }
+
+  // ---- Language ----
+  function setLang(lang) {
+    S.lang = lang;
+    document.getElementById("btn-lang-hi").classList.toggle("active", lang === "hi");
+    document.getElementById("btn-lang-en").classList.toggle("active", lang === "en");
+    // Update voice controls label
+    const vt = document.getElementById("voice-text");
+    if (!S.isPlaying) vt.textContent = lang === "hi" ? "Lok-Katha Suniye" : "Play Story";
+    // Pick best voice for new language
+    pickBestVoice(lang);
+    // Reload story if panel open
+    if (S.activeSite) loadStory(S.activeSite.id);
+  }
 
   function initMap() {
     S.map = L.map("map", { zoomControl: false }).setView([S.lat, S.lng], 10);
     L.control.zoom({ position: "bottomright" }).addTo(S.map);
-
     L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      attribution: '© CARTO | DharoharSetu',
-      maxZoom: 19
+      attribution: "© CARTO | DharoharSetu", maxZoom: 19
     }).addTo(S.map);
-
     S.markersLayer = L.layerGroup().addTo(S.map);
   }
 
@@ -881,7 +851,6 @@
 
   function onLocation() {
     updateUserMarker();
-    // Default: show all state sites (not just 150km radius)
     S.mode = "state";
     document.getElementById("btn-nearby").classList.remove("active");
     document.getElementById("btn-state").classList.add("active");
@@ -898,7 +867,11 @@
       iconSize: [34,34], iconAnchor: [17,34]
     });
     S.userMarker = L.marker([S.lat, S.lng], { icon }).addTo(S.map).bindPopup("<b>Aapka Sthaan</b>");
-    S.map.flyTo([S.lat, S.lng], 10, { duration: 1 });
+  }
+
+  function useCurrentLocation() {
+    document.getElementById("sf-lat").value = S.lat.toFixed(6);
+    document.getElementById("sf-lng").value = S.lng.toFixed(6);
   }
 
   // ---- Mode ----
@@ -906,14 +879,12 @@
     S.mode = mode;
     document.getElementById("btn-nearby").classList.toggle("active", mode === "nearby");
     document.getElementById("btn-state").classList.toggle("active", mode === "state");
-
     if (mode === "state") {
       const info = STATE_BOUNDS[S.state];
       if (info) S.map.fitBounds(info.bounds, { padding: [30,30], duration: 1.2 });
     } else {
       S.map.flyTo([S.lat, S.lng], 10, { duration: 1 });
     }
-
     loadData();
   }
 
@@ -924,22 +895,16 @@
         fetch(`/api/sites?lat=${S.lat}&lng=${S.lng}&mode=${S.mode}&state=${encodeURIComponent(S.state)}`),
         fetch(`/api/festivals?state=${encodeURIComponent(S.state)}`)
       ]);
-
       const siteData = await siteRes.json();
       const festData = await festRes.json();
-
       S.allSites = siteData.sites;
       S.sites = [...S.allSites];
       S.festivals = festData.festivals;
-
       document.getElementById("site-count-badge").textContent = S.sites.length;
       document.getElementById("fest-badge").textContent = S.festivals.length;
-
       renderSidebar(S.sites);
       renderMapMarkers(S.sites);
-    } catch(e) {
-      console.error("Load data error:", e);
-    }
+    } catch(e) { console.error("Load data error:", e); }
   }
 
   // ---- Sidebar ----
@@ -949,14 +914,13 @@
       el.innerHTML = `<div style="text-align:center;padding:20px;color:#8B5E3C;font-size:12px;">इस क्षेत्र में कोई स्थल नहीं मिला।</div>`;
       return;
     }
-
     el.innerHTML = sites.map(site => `
-      <div class="site-card ${S.activeSite?.id === site.id ? 'active' : ''}" 
+      <div class="site-card ${S.activeSite?.id === site.id ? 'active' : ''} ${site.user_submitted ? 'user-card' : ''}"
            id="card-${site.id}" onclick="selectSite('${site.id}')">
-        <img class="site-thumb" src="${site.image_url}" alt="${site.name}" 
+        <img class="site-thumb" src="${site.image_url}" alt="${site.name}"
              onerror="this.src='https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=200&q=60'" />
         <div class="site-card-info">
-          <div class="site-card-name">${site.name}</div>
+          <div class="site-card-name">${site.name}${site.user_submitted ? ' 🌿' : ''}</div>
           <div class="site-card-meta">${site.district} · ${site.category}</div>
           <div class="site-card-dist">📍 ${site.distance_km} km</div>
         </div>
@@ -981,9 +945,11 @@
   function renderMapMarkers(sites) {
     S.markersLayer.clearLayers();
     sites.forEach(site => {
+      const pinClass = site.user_submitted ? "pin-user-site" : "pin-monument";
+      const emoji = site.user_submitted ? "🌿" : "🏛️";
       const icon = L.divIcon({
         className: "",
-        html: `<div class="custom-pin pin-monument"><span>🏛️</span></div>`,
+        html: `<div class="custom-pin ${pinClass}"><span>${emoji}</span></div>`,
         iconSize: [34,34], iconAnchor: [17,34]
       });
       const marker = L.marker([site.lat, site.lng], { icon })
@@ -997,23 +963,14 @@
   async function selectSite(siteId) {
     const site = S.allSites.find(s => s.id === siteId);
     if (!site) return;
-
     S.activeSite = site;
     stopVoice();
     clearRoute();
-
-    // Update sidebar active state
     document.querySelectorAll(".site-card").forEach(c => c.classList.remove("active"));
     const card = document.getElementById(`card-${siteId}`);
     if (card) { card.classList.add("active"); card.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
-
-    // Fly map to site
     S.map.flyTo([site.lat, site.lng], 14, { duration: 1.1 });
-
-    // Open story panel
     openStoryPanel(site);
-
-    // Load story
     loadStory(siteId);
   }
 
@@ -1025,7 +982,7 @@
     document.getElementById("story-site-name").textContent = site.name;
     document.getElementById("story-site-hindi").textContent = site.hindi_name || "";
     document.getElementById("badge-cat").textContent = site.category;
-    document.getElementById("badge-period").textContent = site.period;
+    document.getElementById("badge-period").textContent = site.period || "—";
     document.getElementById("badge-dist").textContent = `${site.distance_km} km away`;
     document.getElementById("story-chapters").innerHTML = "";
     document.getElementById("story-panel").classList.add("open");
@@ -1036,24 +993,21 @@
     stopVoice();
     clearRoute();
     S.activeSite = null;
+    document.getElementById("voice-controls").classList.remove("visible");
     document.querySelectorAll(".site-card").forEach(c => c.classList.remove("active"));
   }
 
   async function loadStory(siteId) {
     document.getElementById("story-loading").classList.add("visible");
     document.getElementById("story-chapters").innerHTML = "";
-
     try {
       const res = await fetch(`/api/storyteller?site_id=${siteId}&lang=${S.lang}`);
       const data = await res.json();
-
       document.getElementById("story-loading").classList.remove("visible");
-
       if (data.error) {
         document.getElementById("story-chapters").innerHTML = `<p style="color:red;padding:10px;">Error: ${data.error}</p>`;
         return;
       }
-
       const chaptersEl = document.getElementById("story-chapters");
       chaptersEl.innerHTML = data.story_chapters.map(ch => `
         <div class="story-chapter">
@@ -1061,20 +1015,16 @@
           <div class="chapter-content">${ch.content}</div>
         </div>
       `).join("");
-
-      // Store speech text
       S.activeSite._speechText = data.speech_narration;
-
     } catch(e) {
       document.getElementById("story-loading").classList.remove("visible");
       document.getElementById("story-chapters").innerHTML = `<p style="color:#8B5E3C;padding:10px;font-size:12px;">Story load karne mein samasya aayi. Dobara try karein.</p>`;
     }
   }
 
-  // ---- Voice Narration ----
+  // ---- Voice Narration (Improved) ----
   function toggleVoice() {
     if (S.isPlaying) { stopVoice(); return; }
-
     const site = S.activeSite;
     if (!site) return;
 
@@ -1083,117 +1033,274 @@
         ? `नमस्कार! आप ${site.hindi_name || site.name} के बारे में सुन रहे हैं। ${site.description} यहाँ की एक प्राचीन लोक-कथा है कि ${site.folklore_secret}`
         : `Greetings! You are exploring ${site.name}. ${site.description} Local folklore says: ${site.folklore_secret}`);
 
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utt = new SpeechSynthesisUtterance(text);
-      utt.lang = S.lang === "hi" ? "hi-IN" : "en-IN";
-      utt.rate = 0.92;
-      utt.pitch = 1.0;
-      utt.onstart = () => {
-        S.isPlaying = true;
-        document.getElementById("voice-icon").textContent = "⏸️";
-        document.getElementById("voice-text").textContent = "Roko (Pause)";
-        document.getElementById("btn-voice").classList.add("playing");
-      };
-      utt.onend = utt.onerror = () => stopVoice();
-      S.speechUtterance = utt;
-      window.speechSynthesis.speak(utt);
+    if (!('speechSynthesis' in window)) {
+      alert("Aapka browser voice narration support nahi karta.");
+      return;
     }
+
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+
+    // Language
+    utt.lang = S.lang === "hi" ? "hi-IN" : "en-IN";
+
+    // Pick best available voice
+    pickBestVoice(S.lang);
+    if (S.selectedVoice) utt.voice = S.selectedVoice;
+
+    // Naturalness settings
+    utt.rate = S.voiceRate;
+    utt.pitch = S.lang === "hi" ? 1.05 : 1.0;
+    utt.volume = 1.0;
+
+    utt.onstart = () => {
+      S.isPlaying = true;
+      document.getElementById("voice-icon").textContent = "⏸️";
+      document.getElementById("voice-text").textContent = S.lang === "hi" ? "Ruko (Pause)" : "Pause";
+      document.getElementById("btn-voice").classList.add("playing");
+      document.getElementById("voice-controls").classList.add("visible");
+    };
+    utt.onend = utt.onerror = () => stopVoice();
+    S.speechUtterance = utt;
+    window.speechSynthesis.speak(utt);
   }
 
   function stopVoice() {
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     S.isPlaying = false;
     document.getElementById("voice-icon").textContent = "▶️";
-    document.getElementById("voice-text").textContent = "Lok-Katha Suniye";
+    document.getElementById("voice-text").textContent = S.lang === "hi" ? "Lok-Katha Suniye" : "Play Story";
     document.getElementById("btn-voice").classList.remove("playing");
+    document.getElementById("voice-controls").classList.remove("visible");
   }
 
-  // ---- In-App OSRM Routing ----
+  // ---- Routing ----
   async function drawRoute() {
     const site = S.activeSite;
     if (!site) return;
-
     const btn = document.getElementById("btn-route");
     btn.textContent = "⏳ Raasta dhundh raha...";
     btn.disabled = true;
-
     try {
       const res = await fetch(`/api/route?from_lat=${S.lat}&from_lng=${S.lng}&to_lat=${site.lat}&to_lng=${site.lng}`);
       const data = await res.json();
-
       if (data.status !== "ok") throw new Error("Route not found");
-
-      // Clear old route
       clearRoute();
-
-      // Draw route polyline on map
-      const latlngs = data.coordinates.map(c => [c[1], c[0]]); // OSRM gives [lng,lat], Leaflet needs [lat,lng]
-
-      S.routeLayer = L.polyline(latlngs, {
-        color: "#1A3A6C",
-        weight: 5,
-        opacity: 0.85,
-        dashArray: "10, 6",
-        lineCap: "round"
-      }).addTo(S.map);
-
-      // Fit map to route
+      const latlngs = data.coordinates.map(c => [c[1], c[0]]);
+      S.routeLayer = L.polyline(latlngs, { color: "#1A3A6C", weight: 5, opacity: 0.85, dashArray: "10, 6", lineCap: "round" }).addTo(S.map);
       S.map.fitBounds(S.routeLayer.getBounds(), { padding: [40, 40] });
-
-      // Show info strip
       document.getElementById("route-dist").textContent = data.distance_km;
       document.getElementById("route-time").textContent = data.duration_minutes;
       document.getElementById("route-info").classList.add("visible");
-
-    } catch(e) {
-      alert("Raasta nahi mila. Please check connection.");
-    }
-
+    } catch(e) { alert("Raasta nahi mila. Please check connection."); }
     btn.innerHTML = "🗺️ Raasta Dikhao";
     btn.disabled = false;
   }
 
   function clearRoute() {
-    if (S.routeLayer) {
-      S.map.removeLayer(S.routeLayer);
-      S.routeLayer = null;
-    }
+    if (S.routeLayer) { S.map.removeLayer(S.routeLayer); S.routeLayer = null; }
     document.getElementById("route-info").classList.remove("visible");
   }
 
   // ---- Festivals Modal ----
   function openFestModal() {
     document.getElementById("fest-modal-title").textContent = `${S.state} Ke Lok-Utsav`;
+    renderFestList();
+    document.getElementById("fest-modal").classList.add("open");
+  }
+
+  function renderFestList() {
     const list = document.getElementById("fest-list");
+    if (!S.festivals.length) {
+      list.innerHTML = `<div style="text-align:center;padding:20px;color:#8B5E3C;">Koi festival nahi mila.</div>`;
+      return;
+    }
     list.innerHTML = S.festivals.map(f => `
-      <div class="fest-card">
+      <div class="fest-card ${f.user_submitted ? 'user-fest' : ''}">
         <div class="fest-card-top">
-          <span class="fest-timing">🗓️ ${f.season_month} · ${f.traditional_timing}</span>
+          <span class="fest-timing">🗓️ ${f.season_month} · ${f.traditional_timing || ''}</span>
+          ${f.user_submitted ? '<span style="font-size:9px;background:#E8F5E9;color:#1B5E20;padding:2px 6px;border-radius:6px;border:1px solid #4CAF50;">🌿 User Added</span>' : ''}
         </div>
         <div class="fest-card-name">${f.name}</div>
         <div class="fest-card-hindi">${f.hindi_name}</div>
         <div class="fest-card-desc">${f.cultural_significance}</div>
-        <div class="fest-card-exp">✦ Zaroor Dekhein: ${f.must_experience}</div>
+        ${f.must_experience ? `<div class="fest-card-exp">✦ Zaroor Dekhein: ${f.must_experience}</div>` : ''}
       </div>
     `).join("");
-    document.getElementById("fest-modal").classList.add("open");
   }
 
-  function closeFestModal() { document.getElementById("fest-modal").classList.remove("open"); }
-
-  // Close modal on outside click
-  document.getElementById("fest-modal").addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) closeFestModal();
-  });
-
-  // ---- Language Toggle ----
-  function toggleLang() {
-    S.lang = S.lang === "hi" ? "en" : "hi";
-    document.getElementById("lang-label").textContent = S.lang === "hi" ? "हिन्दी" : "English";
-    // Reload story in new language if panel is open
-    if (S.activeSite) loadStory(S.activeSite.id);
+  function closeFestModal() {
+    document.getElementById("fest-modal").classList.remove("open");
+    resetFestForm();
   }
+
+  function switchFestTab(tab) {
+    document.getElementById("tab-view-fest").classList.toggle("active", tab === "view");
+    document.getElementById("tab-add-fest").classList.toggle("active", tab === "add");
+    document.getElementById("fest-view-panel").classList.toggle("active", tab === "view");
+    document.getElementById("fest-add-panel").classList.toggle("active", tab === "add");
+  }
+
+  // Close modals on outside click
+  document.getElementById("fest-modal").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeFestModal(); });
+  document.getElementById("add-site-modal").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeAddSiteModal(); });
+
+  // ---- Add Site Modal ----
+  function openAddSiteModal() {
+    // Pre-fill state from current selection
+    document.getElementById("sf-state").value = S.state;
+    document.getElementById("add-site-modal").classList.add("open");
+  }
+
+  function closeAddSiteModal() {
+    document.getElementById("add-site-modal").classList.remove("open");
+    resetSiteForm();
+  }
+
+  function resetSiteForm() {
+    ["sf-name","sf-hindi","sf-district","sf-state","sf-lat","sf-lng","sf-desc","sf-folklore","sf-besttime","sf-image"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = "";
+    });
+    document.getElementById("sf-category").value = "";
+    document.getElementById("site-form-success").classList.remove("visible");
+    document.getElementById("site-form-error").classList.remove("visible");
+    document.getElementById("site-submit-btn").disabled = false;
+  }
+
+  function resetFestForm() {
+    ["ff-name","ff-hindi","ff-state","ff-district","ff-timing","ff-must","ff-summary","ff-significance"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = "";
+    });
+    document.getElementById("ff-month").value = "";
+    document.getElementById("fest-form-success").classList.remove("visible");
+    document.getElementById("fest-form-error").classList.remove("visible");
+    document.getElementById("fest-submit-btn").disabled = false;
+  }
+
+  // ---- Submit Site ----
+  async function submitSite() {
+    const btn = document.getElementById("site-submit-btn");
+    const errEl = document.getElementById("site-form-error");
+    const sucEl = document.getElementById("site-form-success");
+    errEl.classList.remove("visible");
+    sucEl.classList.remove("visible");
+
+    const payload = {
+      name: document.getElementById("sf-name").value.trim(),
+      hindi_name: document.getElementById("sf-hindi").value.trim(),
+      district: document.getElementById("sf-district").value.trim(),
+      state: document.getElementById("sf-state").value.trim(),
+      lat: parseFloat(document.getElementById("sf-lat").value),
+      lng: parseFloat(document.getElementById("sf-lng").value),
+      category: document.getElementById("sf-category").value,
+      description: document.getElementById("sf-desc").value.trim(),
+      folklore_secret: document.getElementById("sf-folklore").value.trim(),
+      best_time_to_visit: document.getElementById("sf-besttime").value.trim() || "October to March",
+      image_url: document.getElementById("sf-image").value.trim()
+    };
+
+    // Basic client-side check
+    if (!payload.name || !payload.state || !payload.description || !payload.category || isNaN(payload.lat) || isNaN(payload.lng)) {
+      errEl.textContent = "❌ Kripaya saare zaroori fields (* wale) sahi se bharo.";
+      errEl.classList.add("visible");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "⏳ Submit ho raha hai...";
+
+    try {
+      const res = await fetch("/api/submit/site", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const errs = data.detail?.errors || [data.detail || "Server error"];
+        errEl.innerHTML = "❌ " + errs.join("<br>❌ ");
+        errEl.classList.add("visible");
+        btn.disabled = false;
+        btn.textContent = "🏛️ Location Jodo";
+        return;
+      }
+      sucEl.classList.add("visible");
+      // Add to local data immediately
+      const newSite = { ...data.site, distance_km: 0 };
+      S.allSites.push(newSite);
+      S.sites.push(newSite);
+      document.getElementById("site-count-badge").textContent = S.allSites.length;
+      renderSidebar(S.sites);
+      renderMapMarkers(S.sites);
+      btn.textContent = "✅ Jod Diya!";
+    } catch(e) {
+      errEl.textContent = "❌ Network error. Connection check karo.";
+      errEl.classList.add("visible");
+      btn.disabled = false;
+      btn.textContent = "🏛️ Location Jodo";
+    }
+  }
+
+  // ---- Submit Festival ----
+  async function submitFestival() {
+    const btn = document.getElementById("fest-submit-btn");
+    const errEl = document.getElementById("fest-form-error");
+    const sucEl = document.getElementById("fest-form-success");
+    errEl.classList.remove("visible");
+    sucEl.classList.remove("visible");
+
+    const payload = {
+      name: document.getElementById("ff-name").value.trim(),
+      hindi_name: document.getElementById("ff-hindi").value.trim(),
+      state: document.getElementById("ff-state").value.trim(),
+      district: document.getElementById("ff-district").value.trim(),
+      season_month: document.getElementById("ff-month").value,
+      traditional_timing: document.getElementById("ff-timing").value.trim(),
+      cultural_significance: document.getElementById("ff-significance").value.trim(),
+      must_experience: document.getElementById("ff-must").value.trim(),
+      summary: document.getElementById("ff-summary").value.trim()
+    };
+
+    if (!payload.name || !payload.state || !payload.cultural_significance || !payload.season_month) {
+      errEl.textContent = "❌ Kripaya saare zaroori fields (* wale) sahi se bharo.";
+      errEl.classList.add("visible");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "⏳ Submit ho raha hai...";
+
+    try {
+      const res = await fetch("/api/submit/festival", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const errs = data.detail?.errors || [data.detail || "Server error"];
+        errEl.innerHTML = "❌ " + errs.join("<br>❌ ");
+        errEl.classList.add("visible");
+        btn.disabled = false;
+        btn.textContent = "🎪 Festival Jodo";
+        return;
+      }
+      sucEl.classList.add("visible");
+      // Add to local list
+      S.festivals.push(data.festival);
+      document.getElementById("fest-badge").textContent = S.festivals.length;
+      renderFestList();
+      btn.textContent = "✅ Jod Diya!";
+    } catch(e) {
+      errEl.textContent = "❌ Network error. Connection check karo.";
+      errEl.classList.add("visible");
+      btn.disabled = false;
+      btn.textContent = "🎪 Festival Jodo";
+    }
+  }
+
   </script>
 </body>
 </html>
