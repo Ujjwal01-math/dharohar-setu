@@ -451,7 +451,7 @@
       </div>
       <!-- Add Location Button -->
       <button class="sidebar-add-btn" onclick="openAddSiteModal()" style="margin:8px 10px 4px;">
-        ➕ Apna Location Add Karo
+        ➕ Add Location
       </button>
       <div id="sidebar-search">
         <input type="text" id="search-input" placeholder="🔍 Search sites..." oninput="filterSidebar(this.value)" />
@@ -535,8 +535,8 @@
       </div>
       <!-- Tabs -->
       <div class="modal-tabs">
-        <button class="modal-tab active" id="tab-view-fest" onclick="switchFestTab('view')">📋 Utsav Dekho</button>
-        <button class="modal-tab" id="tab-add-fest" onclick="switchFestTab('add')">➕ Apna Festival Add Karo</button>
+        <button class="modal-tab active" id="tab-view-fest" onclick="switchFestTab('view')">📋 festivals</button>
+        <button class="modal-tab" id="tab-add-fest" onclick="switchFestTab('add')">➕ Add Festivals</button>
       </div>
       <!-- View Tab -->
       <div class="modal-tab-content active u-modal-body" id="fest-view-panel" style="max-height:60vh;">
@@ -544,7 +544,7 @@
       </div>
       <!-- Add Festival Tab -->
       <div class="modal-tab-content u-modal-body" id="fest-add-panel">
-        <div class="form-success" id="fest-form-success">✅ Aapka festival safaltapoorvak jod diya gaya!</div>
+        <div class="form-success" id="fest-form-success">✅ festival added successfully!</div>
         <div class="form-error" id="fest-form-error"></div>
         <div class="form-row">
           <div class="form-group">
@@ -604,13 +604,13 @@
     <div class="u-modal-inner">
       <div class="u-modal-header">
         <div>
-          <h3>➕ Naya Heritage Location Jodo</h3>
-          <div style="font-size:10px;color:rgba(255,220,100,0.7);margin-top:2px;">Aapka submission turant map pe aa jayega</div>
+          <h3>➕ Add new Heritage Location </h3>
+          <div style="font-size:10px;color:rgba(255,220,100,0.7);margin-top:2px;">your submission shown on map as soon</div>
         </div>
         <button class="modal-close" onclick="closeAddSiteModal()">✕</button>
       </div>
       <div class="u-modal-body">
-        <div class="form-success" id="site-form-success">✅ Aapka location safaltapoorvak jod diya gaya! Map refresh karo ya reload karo.</div>
+        <div class="form-success" id="site-form-success">✅Your location added successfully!  refresh or reload the map.</div>
         <div class="form-error" id="site-form-error"></div>
         <div class="form-row">
           <div class="form-group">
